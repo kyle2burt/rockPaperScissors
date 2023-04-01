@@ -23,6 +23,7 @@ function getComputerChoice() { // Randomly return rock, paper, or scissors
 function startRound(userInput, computerInput) {
     let outcome;
     userInput = userInput.toLowerCase();
+    computerInput = computerInput.toLowerCase();
 
     if (userInput == "rock") userInput = 1;
     else if (userInput == "paper") userInput = 2;
