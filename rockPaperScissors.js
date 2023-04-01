@@ -62,6 +62,7 @@ function game() {
         let outcome = startRound(userInput, computerChoice);
 
         if (outcome == "You Win!") console.log(`${capitalize(userInput)} beats ${capitalize(computerChoice)}. ${outcome}`);
-        else console.log(`${capitalize(computerChoice)} beats ${capitalize(userInput)}. ${outcome}`);
+        else if(outcome == "You lose!") console.log(`${capitalize(computerChoice)} beats ${capitalize(userInput)}. ${outcome}`);
+        else console.log(`${capitalize(userInput)} vs ${capitalize(computerChoice)}... ${outcome}`);
     }
 }
