@@ -1,4 +1,5 @@
 console.log("Rock Paper Scissors!");
+game();
 
 function getComputerChoice() { // Randomly return rock, paper, or scissors
     let computerChoice
@@ -17,4 +18,40 @@ function getComputerChoice() { // Randomly return rock, paper, or scissors
     }
 
     return computerChoice;
+}
+
+function startRound(userInput, computerInput) {
+    let outcome;
+    userInput = userInput.toLowerCase();
+
+    if (userInput == "rock") userInput = 1;
+    else if (userInput == "paper") userInput = 2;
+    else if (userInput == "scissors") userInput = 3;
+
+    if (computerInput == "rock") computerInput = 1;
+    else if (computerInput == "paper") computerInput = 2;
+    else if (computerInput == "scissors") computerInput = 3;
+
+    if ((userInput % 3) == computerInput) { 
+        outcome = "Its a tie";
+    }
+    else if (userInput == computerInput - 1) {
+        outcome = "You lose!";
+    }
+    else {
+        outcome = "You Win!";
+    }
+
+    return outcome;
+}
+
+function game() {
+    for(let i = 0; i < 5; i++) {
+        let userInput = prompt("Rock, Paper, Scissors?: ");
+        let computerChoice = getComputerChoice();
+        let outcome = startRound(userInput, computerChoice);
+
+        if (outcome == "You Win!") console.log(`${userInput} beats ${computerChoice}. ${outcome}`);
+        else console.log(`${computerChoice} beats ${userInput}. ${outcome}`);
+    }
 }
