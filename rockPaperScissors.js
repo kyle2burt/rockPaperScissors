@@ -45,13 +45,22 @@ function startRound(userInput, computerInput) {
     return outcome;
 }
 
+function capitalize(word) {
+    let firstLetter = word.slice(0, 1);
+    word = word.slice(1);
+    firstLetter = firstLetter.toUpperCase();
+    word = word.toLowerCase();
+
+    return word = firstLetter + word
+}
+
 function game() {
     for(let i = 0; i < 5; i++) {
         let userInput = prompt("Rock, Paper, Scissors?: ");
         let computerChoice = getComputerChoice();
         let outcome = startRound(userInput, computerChoice);
 
-        if (outcome == "You Win!") console.log(`${userInput} beats ${computerChoice}. ${outcome}`);
-        else console.log(`${computerChoice} beats ${userInput}. ${outcome}`);
+        if (outcome == "You Win!") console.log(`${capitalize(userInput)} beats ${capitalize(computerChoice)}. ${outcome}`);
+        else console.log(`${capitalize(computerChoice)} beats ${capitalize(userInput)}. ${outcome}`);
     }
 }
