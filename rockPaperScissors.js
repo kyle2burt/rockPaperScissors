@@ -1,5 +1,3 @@
-console.log("Rock Paper Scissors!");
-
 function getComputerChoice() { // Randomly return rock, paper, or scissors
     let computerChoice
     let randomNumber = Math.floor(Math.random() * 3); // Random number between 0 and 2
@@ -59,14 +57,40 @@ function game(userInput) {
     let computerChoice = getComputerChoice();
     let outcome = startRound(userInput, computerChoice);
 
-    if (outcome == "You Win!") console.log(`${capitalize(userInput)} beats ${capitalize(computerChoice)}. ${outcome}`);
-    else if(outcome == "You lose!") console.log(`${capitalize(computerChoice)} beats ${capitalize(userInput)}. ${outcome}`);
-    else console.log(`${capitalize(userInput)} vs ${capitalize(computerChoice)}... ${outcome}`);
+    playerSelectionText.textContent = userInput;
+    computerSelectionText.textContent = computerChoice;
+
+    if (outcome == "You Win!") {
+        winnerText.textContent = outcome;
+        outcomeText.textContent = `${capitalize(userInput)} beats ${capitalize(computerChoice)}`;
+        playerScore++;
+        playerScoreText.textContent = `Player Score: ${playerScore}`;
+    }
+    else if(outcome == "You lose!") {
+        winnerText.textContent = outcome;
+        outcomeText.textContent = `${capitalize(userInput)} beats ${capitalize(computerChoice)}`;
+        computerScore++;
+        computerScoreText.textContent = `Computer Score: ${computerScore}`;
+    }
+    else {
+        winnerText.textContent = outcome;
+        outcomeText.textContent = `${capitalize(userInput)} ties with ${capitalize(computerChoice)}`;
+    }
 }
 
 const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper")
 const scissorsButton = document.querySelector("#scissors");
+
+const winnerText = document.querySelector("#winner-text");
+const outcomeText = document.querySelector("#outcome-text");
+const playerScoreText = document.querySelector("#player-score");
+const playerSelectionText = document.querySelector("#player-selection")
+const computerSelectionText = document.querySelector("#computer-selection")
+const computerScoreText = document.querySelector("#computer-score");
+
+let playerScore = 0;
+let computerScore = 0;
 
 rockButton.addEventListener("click", () => {
     game(rockButton.id)
