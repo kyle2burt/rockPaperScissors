@@ -11,6 +11,8 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #352F44;
+    color: #FAF0E6;
 }
 
 .content {
@@ -19,6 +21,13 @@ header {
     gap: 20px;
     margin-bottom: 50px;
 }
+
+.outcome-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .selection-content {
     display: flex;
     justify-content: center;
