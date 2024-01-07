@@ -32,7 +32,7 @@ function startRound(userInput, computerInput) {
     else if (computerInput == "paper") computerInput = 2;
     else if (computerInput == "scissors") computerInput = 3;
 
-    if ((userInput % 3) == computerInput) { 
+    if (userInput == computerInput) { 
         outcome = "Its a tie";
     }
     else if (userInput == computerInput - 1) {
