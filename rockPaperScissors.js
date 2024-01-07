@@ -1,5 +1,4 @@
 console.log("Rock Paper Scissors!");
-game();
 
 function getComputerChoice() { // Randomly return rock, paper, or scissors
     let computerChoice
@@ -55,14 +54,29 @@ function capitalize(word) {
     return word = firstLetter + word
 }
 
-function game() {
-    for(let i = 0; i < 5; i++) {
-        let userInput = prompt("Rock, Paper, Scissors?: ");
-        let computerChoice = getComputerChoice();
-        let outcome = startRound(userInput, computerChoice);
+function game(userInput) {
+    // let userInput = prompt("Rock, Paper, Scissors?: ");
+    let computerChoice = getComputerChoice();
+    let outcome = startRound(userInput, computerChoice);
 
-        if (outcome == "You Win!") console.log(`${capitalize(userInput)} beats ${capitalize(computerChoice)}. ${outcome}`);
-        else if(outcome == "You lose!") console.log(`${capitalize(computerChoice)} beats ${capitalize(userInput)}. ${outcome}`);
-        else console.log(`${capitalize(userInput)} vs ${capitalize(computerChoice)}... ${outcome}`);
-    }
+    if (outcome == "You Win!") console.log(`${capitalize(userInput)} beats ${capitalize(computerChoice)}. ${outcome}`);
+    else if(outcome == "You lose!") console.log(`${capitalize(computerChoice)} beats ${capitalize(userInput)}. ${outcome}`);
+    else console.log(`${capitalize(userInput)} vs ${capitalize(computerChoice)}... ${outcome}`);
 }
+
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper")
+const scissorsButton = document.querySelector("#scissors");
+
+rockButton.addEventListener("click", () => {
+    game(rockButton.id)
+}); 
+
+paperButton.addEventListener("click", () => {
+    game(paperButton.id)
+});
+
+scissorsButton.addEventListener("click", () => {
+    game(scissorsButton.id)
+});
+
