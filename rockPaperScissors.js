@@ -76,6 +76,39 @@ function game(userInput) {
         winnerText.textContent = outcome;
         outcomeText.textContent = `${capitalize(userInput)} ties with ${capitalize(computerChoice)}`;
     }
+
+    if (playerScore >= 5 || computerScore >= 5) {
+        rockButton.disabled = true;
+        paperButton.disabled = true;
+        scissorsButton.disabled = true;
+
+        const gameOver = document.querySelector(".modal");
+        const gameOverWinner = document.querySelector("#game-winner");
+        const playAgainButton = document.querySelector("#play-again");
+
+        if (playerScore > computerScore) gameOverWinner.textContent = "You Win!";
+        else gameOverWinner.textContent = "You Lose!";
+
+        gameOver.style.display = "block";
+
+        playAgainButton.addEventListener("click", () => {
+            playerScore = 0;
+            computerScore = 0;
+
+            winnerText.textContent = "Ready?";
+            outcomeText.textContent = "First to score 5 points wins!"
+            playerSelectionText.textContent = "?";
+            computerSelectionText.textContent = "?";
+            playerScoreText.textContent = `Player Score: ${playerScore}`;
+            computerScoreText.textContent = `Computer Score: ${computerScore}`;
+
+            gameOver.style.display = "none";
+
+            rockButton.disabled = false;
+            paperButton.disabled = false;
+            scissorsButton.disabled = false;
+        });
+    }
 }
 
 const rockButton = document.querySelector("#rock");
